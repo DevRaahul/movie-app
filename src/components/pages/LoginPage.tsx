@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { KeySquare } from "lucide-react";
 import { Button } from "../ui/button";
 import { LoaderComponent } from "../common/LoaderComponent";
+import { PAGE_ROUTES } from "@/routes/Routes";
+import { TextContent } from "@/constant/PageContent";
 
 const LoginPage: FC = () => {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
@@ -13,7 +15,7 @@ const LoginPage: FC = () => {
   useEffect(() => {
     debugger;
     if (isAuthenticated) {
-      navigate("/home");
+      navigate(PAGE_ROUTES.HOME_PAGE);
     }
   }, [isAuthenticated]);
 
@@ -30,13 +32,13 @@ const LoginPage: FC = () => {
           ) : (
             <Card>
               <CardHeader>
-                <CardTitle className="text-3xl font-normal">Login</CardTitle>
-                <CardDescription>Enter your email below to login into your account.</CardDescription>
+                <CardTitle className="text-3xl font-normal">{TextContent.LOGIN}</CardTitle>
+                <CardDescription>{TextContent.LOGIN_DESC}</CardDescription>
               </CardHeader>
               <CardContent>
                 <Button type="button" className="w-full" onClick={handleLoginWithAuth}>
                   <KeySquare />
-                  Continue with Google
+                  {TextContent.CONTINUE}
                 </Button>
               </CardContent>
             </Card>

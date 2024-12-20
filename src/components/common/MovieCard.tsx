@@ -1,13 +1,16 @@
 import { FC } from "react";
-import { Card, CardTitle, CardDescription, CardContent, CardFooter } from "../ui/card";
-import { Button } from "../ui/button";
+import { Card, CardTitle, CardDescription, CardContent } from "../ui/card";
 import { ICardComponent } from "@/constant/interface";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 const MovieCard: FC<ICardComponent> = (props) => {
+  const [globalData] = useGlobalContext();
+  const { imgUrl } = globalData;
+
   return (
     <Card className="m-2 p-2" key={props.id} data-testid={`movie-${props.id}`}>
       <img
-        src={"http://image.tmdb.org/t/p/original" + props.imgSrc}
+        src={imgUrl + props.imgSrc}
         alt="Movie 1"
         width="200"
         height="300"
@@ -23,9 +26,6 @@ const MovieCard: FC<ICardComponent> = (props) => {
         <CardDescription className="text-sm text-gray-500 dark:text-gray-400">Rating:{props.vote_average}</CardDescription>
         <div />
       </CardContent>
-      <CardFooter>
-        <Button>Delete</Button>
-      </CardFooter>
     </Card>
   );
 };
