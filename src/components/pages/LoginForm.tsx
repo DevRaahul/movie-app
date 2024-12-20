@@ -1,49 +1,22 @@
-import { FC } from "react";
-
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { FC, useEffect } from "react";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { KeySquare } from "lucide-react";
-// import { useForm } from "react-hook-form";
-// import { z } from "zod";
-// import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm: FC = () => {
-  //   const formSchema = z.object({
-  //     username: z
-  //       .string()
-  //       .min(2, {
-  //         message: "Username must be at least 2 characters.",
-  //       })
-  //       .max(50, {
-  //         message: "Username should not be more than 50 characters.",
-  //       }),
-  //     password: z
-  //       .string()
-  //       .min(2, {
-  //         message: "Password must be at least 2 characters.",
-  //       })
-  //       .max(8, {
-  //         message: "Password should not be more than 8 characters.",
-  //       }),
-  //   });
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
 
-  //   const form = useForm<z.infer<typeof formSchema>>({
-  //     resolver: zodResolver(formSchema),
-  //     defaultValues: {
-  //       username: "",
-  //       password: "",
-  //     },
-  //   });
-
-  //   function onSubmit(values: z.infer<typeof formSchema>) {
-  //     // Do something with the form values.
-  //     console.log(values);
-  //   }
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated]);
 
   return (
     <>
-      <Button type="button" className="w-full">
+      <Button type="button" className="w-full" onClick={() => loginWithRedirect()}>
         <KeySquare />
         Continue with Google
       </Button>
