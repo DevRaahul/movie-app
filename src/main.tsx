@@ -9,7 +9,9 @@ createRoot(document.getElementById("root")!).render(
   <ErrorBoundary fallback={<p>Somthing went wrong...</p>}>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <GlobalContextProvider>
-        <AppRoutes />
+        <div className="h-full w-full">
+          <AppRoutes />
+        </div>
       </GlobalContextProvider>
     </ThemeProvider>
   </ErrorBoundary>

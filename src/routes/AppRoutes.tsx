@@ -1,8 +1,9 @@
-import App from "@/App";
 import axiosInstance from "@/constant/AxiosConfig";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "@/components/pages/LoginPage";
+import PageNotFound from "@/components/pages/PageNotFound";
 
 const AppRoutes = () => {
   const [, updateGlobalData] = useGlobalContext();
@@ -22,7 +23,8 @@ const AppRoutes = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
