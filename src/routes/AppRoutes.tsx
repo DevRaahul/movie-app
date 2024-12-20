@@ -6,6 +6,7 @@ import LoginPage from "@/components/pages/LoginPage";
 import PageNotFound from "@/components/pages/PageNotFound";
 import { API_URL } from "@/constant/ApiEndPoints";
 import HomeContainer from "@/components/pages/HomeContainer";
+import { PAGE_ROUTES } from "./Routes";
 
 const AppRoutes = () => {
   const [, updateGlobalData] = useGlobalContext();
@@ -25,9 +26,9 @@ const AppRoutes = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/home" element={<HomeContainer />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path={PAGE_ROUTES.LOGIN_PAGE} element={<LoginPage />} />
+          <Route path={PAGE_ROUTES.HOME_PAGE} element={<HomeContainer />} />
+          <Route path={PAGE_ROUTES.PAGE_NOT_FOUND} element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
