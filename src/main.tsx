@@ -5,6 +5,7 @@ import AppRoutes from "./routes/AppRoutes.tsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 import GlobalContextProvider from "./context/GlobalContext.tsx";
 import "./index.css";
+import { RouterProvider } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <Auth0Provider
@@ -18,7 +19,7 @@ createRoot(document.getElementById("root")!).render(
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <GlobalContextProvider>
           <div className="h-full w-full">
-            <AppRoutes />
+            <RouterProvider router={AppRoutes} />
           </div>
         </GlobalContextProvider>
       </ThemeProvider>
