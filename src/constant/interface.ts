@@ -12,3 +12,8 @@ export interface ICardComponent {
 export interface IGlobalData {
   children: React.ReactNode;
 }
+
+export interface navMenu {
+  label: string;
+  href: string;
+}
