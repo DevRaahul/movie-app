@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex flex-row w-full justify-between bg-neutral-600 bg-opacity-75 h-16 fixed">
+      <header className="flex flex-row w-full justify-between bg-neutral-600 bg-opacity-75 h-16 sticky">
         <div className="container flex mx-auto px-2 items-center h-full flex-row">
           <div className="inline-block">
             <img src={logo} alt="logo" height={65} width={65} />

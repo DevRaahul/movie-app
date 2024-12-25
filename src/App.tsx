@@ -26,7 +26,7 @@ function App() {
     <>
       <Header />
       {/* <SideNav /> */}
-      <main className="pt-16">
+      <main className="pt-16 h-screen">
         <Outlet />
       </main>
       <Footer />
