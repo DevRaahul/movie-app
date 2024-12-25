@@ -6,6 +6,7 @@ interface IText {
   PAGE_ERROR_TITLE: string;
   LOGIN_PAGE: string;
 }
+
 export const TextContent: IText = {
   LOGIN: "Login",
   LOGIN_DESC: "Use gmail for authication.",
