@@ -3,7 +3,7 @@ import { Input } from "../ui/input";
 
 const HomeContainer = () => {
   return (
-    <div className="border-black border-2">
+    <div className="border-black border-2 h-auto">
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <div className="relative">
           <div className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground">
