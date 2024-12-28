@@ -14,4 +14,5 @@ export interface IGlobalData {
 export interface navMenu {
   label: string;
   href: string;
+  icon: string;
 }
