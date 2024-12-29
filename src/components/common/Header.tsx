@@ -1,10 +1,9 @@
-import { ModeToggle } from "./ThemeToggle";
-import { useAuth0 } from "@auth0/auth0-react";
-import logOut from "../../assets/log-out.svg";
 import disneyLogo from "../../assets/logo.png";
-import dummyLogo from "../../assets/dummy.png";
 import { Clapperboard, House, Plus, Search, TvMinimalPlay } from "lucide-react";
 import { navMenu } from "@/constant/interface";
+import ProfileMenu from "./ProfileMenu";
+import { useAuth0 } from "@auth0/auth0-react";
+import { FC } from "react";
 
 const navigation: navMenu[] = [
   {
@@ -29,10 +28,8 @@ const navigation: navMenu[] = [
   },
 ];
 
-const Header = () => {
-  const { isAuthenticated, logout } = useAuth0();
-
-  const logOutHandler = () => logout();
+const Header: FC = () => {
+  const { isAuthenticated } = useAuth0();
 
   return (
     <>
@@ -47,7 +44,7 @@ const Header = () => {
               </div>
             ))}
           </div>
-          <img src={dummyLogo} alt="profile pic" className="rounded-full w-[40px] mr-4 cursor-pointer" />
+          <ProfileMenu />
         </div>
       </header>
     </>
