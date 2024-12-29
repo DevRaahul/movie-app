@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export interface ICardComponent {
   imgSrc: string;
   id: number;
@@ -13,6 +15,14 @@ export interface IGlobalData {
 
 export interface navMenu {
   label: string;
-  href: string;
-  icon: string;
+  icon: ReactElement;
+}
+
+export interface IIconObj {
+  home: ReactElement;
+  search: ReactElement;
+  movie: ReactElement;
+  series: ReactElement;
+  tv: ReactElement;
+  watch: ReactElement;
 }

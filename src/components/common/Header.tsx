@@ -1,9 +1,34 @@
-import { navigation } from "@/constant/constant";
-import logo from "../../assets/youtube_logo.png";
-import { NavLink } from "react-router-dom";
 import { ModeToggle } from "./ThemeToggle";
 import { useAuth0 } from "@auth0/auth0-react";
 import logOut from "../../assets/log-out.svg";
+import disneyLogo from "../../assets/logo.png";
+import dummyLogo from "../../assets/dummy.png";
+import { Clapperboard, House, Plus, Search, TvMinimalPlay } from "lucide-react";
+import { navMenu } from "@/constant/interface";
+
+const navigation: navMenu[] = [
+  {
+    label: "Home",
+    icon: <House />,
+  },
+  {
+    label: "Search",
+    icon: <Search />,
+  },
+  {
+    label: "Watch List",
+    icon: <Plus />,
+  },
+  {
+    label: "Movie",
+    icon: <Clapperboard />,
+  },
+  {
+    label: "Series",
+    icon: <TvMinimalPlay />,
+  },
+];
+
 const Header = () => {
   const { isAuthenticated, logout } = useAuth0();
 
@@ -11,7 +36,27 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex flex-row w-full justify-between bg-neutral-600 bg-opacity-75 h-16 sticky">
+      <header className="flex items-center gap-6 p-1">
+        <img src={disneyLogo} alt="logo" className="w-[80px] md:w-[100px] object-cover" />
+        <div className="flex gap-2 justify-between w-full">
+          <div className="flex items-center gap-8">
+            {navigation.map(({ icon, label }) => (
+              <div className="flex gap-4 items-center font-semibold text-[16px] cursor-pointer hover:underline underline-offset-8">
+                {icon}
+                <h2>{label}</h2>
+              </div>
+            ))}
+          </div>
+          <img src={dummyLogo} alt="profile pic" className="rounded-full w-[40px] mr-4 cursor-pointer" />
+        </div>
+      </header>
+    </>
+  );
+};
+
+export default Header;
+{
+  /* <header className="flex flex-row w-full justify-between bg-neutral-600 bg-opacity-75 h-16 sticky">
         <div className="container flex mx-auto px-2 items-center h-full flex-row">
           <div className="inline-block">
             <img src={logo} alt="logo" height={65} width={65} />
@@ -50,9 +95,5 @@ const Header = () => {
             </svg>
           )}
         </nav>
-      </header>
-    </>
-  );
-};
-
-export default Header;
+      </header> */
+}
