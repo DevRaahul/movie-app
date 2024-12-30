@@ -1,9 +1,12 @@
 import disneyLogo from "../../assets/logo.png";
-import { Clapperboard, House, Plus, Search, TvMinimalPlay } from "lucide-react";
+import { Clapperboard, EllipsisVertical, House, LogOut, Plus, Search, TvMinimalPlay } from "lucide-react";
 import { navMenu } from "@/constant/interface";
 import ProfileMenu from "./ProfileMenu";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FC } from "react";
+import HeaderItems from "./HeaderItems";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
+import { ModeToggle } from "./ThemeToggle";
 
 const navigation: navMenu[] = [
   {
@@ -33,16 +36,33 @@ const Header: FC = () => {
 
   return (
     <>
-      <header className="flex items-center gap-6 p-1">
+      <header className="flex items-center gap-6 p-1 h-16">
         <img src={disneyLogo} alt="logo" className="w-[80px] md:w-[100px] object-cover" />
         <div className="flex gap-2 justify-between w-full">
-          <div className="flex items-center gap-8">
-            {navigation.map(({ icon, label }) => (
-              <div className="flex gap-4 items-center font-semibold text-[16px] cursor-pointer hover:underline underline-offset-8">
-                {icon}
-                <h2>{label}</h2>
-              </div>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            <HeaderItems list={navigation} />
+          </div>
+          <div className="flex items-center gap-4 md:hidden">
+            <HeaderItems list={[...navigation].slice(0, 3)} />
+            <div className="flex gap-4 items-center font-semibold text-[16px] cursor-pointer hover:underline underline-offset-8">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <EllipsisVertical />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {[...navigation]?.splice(0, 2)?.map((dt) => {
+                    return (
+                      <DropdownMenuLabel>
+                        <div className="flex gap-4 items-center font-semibold text-[16px] cursor-pointer mt-2">
+                          {dt.icon}
+                          <h2>{dt.label}</h2>
+                        </div>
+                      </DropdownMenuLabel>
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
           <ProfileMenu />
         </div>
