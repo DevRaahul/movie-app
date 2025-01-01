@@ -5,8 +5,8 @@ import ProfileMenu from "./ProfileMenu";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FC } from "react";
 import HeaderItems from "./HeaderItems";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
-import { ModeToggle } from "./ThemeToggle";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenuGroup } from "../ui/dropdown-menu";
 
 const navigation: navMenu[] = [
   {
@@ -50,14 +50,18 @@ const Header: FC = () => {
                   <EllipsisVertical />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  {[...navigation]?.splice(0, 2)?.map((dt) => {
+                  {[...navigation]?.splice(3, navigation?.length - 1)?.map((dt) => {
                     return (
-                      <DropdownMenuLabel>
-                        <div className="flex gap-4 items-center font-semibold text-[16px] cursor-pointer mt-2">
-                          {dt.icon}
-                          <h2>{dt.label}</h2>
-                        </div>
-                      </DropdownMenuLabel>
+                      <>
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem>
+                            <div className="flex gap-4 items-center cursor-pointer mt-2">
+                              {dt.icon}
+                              <h2>{dt.label}</h2>
+                            </div>
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </>
                     );
                   })}
                 </DropdownMenuContent>
